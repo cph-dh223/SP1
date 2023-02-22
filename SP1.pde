@@ -1,7 +1,7 @@
 
 ArrayList<Circle> circles;
 int numOfCircles = 200;
-int circleRadiusMax = 20;
+int circleRadiusMax = 10;
 int spawnInterval = 5;
 
 void setup() {
@@ -19,19 +19,12 @@ void draw() {
         c.updateCircle(circles);
         c.drawCircle();
     }
-    if(circles.size() < numOfCircles && frameCount % spawnInterval == 0){
+    if(frameRate > 50 && frameCount % spawnInterval == 0){
         circles.add(new Circle(circles.size(), width/5, height/5, (int)random(2,10), 0, (int)random(5,circleRadiusMax), width, height));
     }
+
 }
 
 void mousePressed(){
     exit();
-}
-
-void keyPressed() {
-    if (keyCode == ' '){
-        for (Circle c : circles) {
-            c.vel.setMag(0);
-        }
-    }
 }

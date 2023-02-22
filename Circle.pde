@@ -64,9 +64,6 @@ class Circle {
             vel.y *= -0.5;
         }
     }
-    boolean atEdege(){
-        return pos.x + radius > boundingBoxXMax || pos.x - radius < boundingBoxXMin || pos.y + radius > boundingBoxYMax || pos.y - radius < boundingBoxYMin;
-    }
 
     private void circleCollision(ArrayList<Circle> circles){
         for (Circle c : circles) {
@@ -81,8 +78,8 @@ class Circle {
                     vel.rotate(PVector.angleBetween(c.vel, PVector.mult(axis,-1)));
                     if(i < 1){
                         float sharedMag = c.vel.mag() + vel.mag();
-                        c.vel.setMag(sharedMag * 0.5);
-                        vel.setMag(sharedMag * 0.5);
+                        c.vel.setMag(sharedMag * 0.499);
+                        vel.setMag(sharedMag * 0.499);
                     }
                     pos.add(PVector.mult(axis, -bumpProcentPerSubsetp));
                     c.pos.add(PVector.mult(axis, bumpProcentPerSubsetp));
