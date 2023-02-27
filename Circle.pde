@@ -35,9 +35,9 @@ class Circle {
 
         ellipse(pos.x, pos.y, radius*2, radius*2);
     }
-    
-    void updateCircle(ArrayList<Circle> circles){
 
+    //Updates the circle when called
+    void updateCircle(ArrayList<Circle> circles){
         vel.add(new PVector(0, 0.1)); // ads gravety
         vel.setMag(vel.mag() * 0.999);
 
@@ -47,7 +47,7 @@ class Circle {
             pos.add(vel);
         }
     }
-
+    //Handles the collision with the walls
     private void edegeCollision(){
         if (pos.x + radius > boundingBoxXMax){
             pos.x = boundingBoxXMax - radius;
@@ -65,6 +65,7 @@ class Circle {
         }
     }
 
+    // This method handles the collision between this Circle and all the circles form the argument
     private void circleCollision(ArrayList<Circle> circles){
         for (Circle c : circles) {
             if(c.key == key){
